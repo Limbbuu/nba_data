@@ -1,4 +1,4 @@
 
-// OMA RAPIDKEY-AVAIN ÄLÄ JAA GITHUBIIN!
+// OMA API-AVAIN ÄLÄ JAA GITHUBIIN!
 
-export const rapidAPI_KEY = '9d1adeab9fmsh004d5e9e306cec1p1035b2jsna7c0558bd709';
+export const API_KEY = '909ffa8d-9323-44df-bb4d-41756bba0a5a';

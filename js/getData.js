@@ -1,34 +1,24 @@
-import { rapidAPI_KEY } from './config.js';
+import { API_KEY } from './config.js';
 
-async function getData() {
-    const APIurl = 'https://nba-api-free-data.p.rapidapi.com/nba-atlantic-team-list';
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': rapidAPI_KEY,
-            'X-RapidAPI-Host': 'nba-api-free-data.p.rapidapi.com'
-        }
-    };
-
+async function getTeams() {
     try {
-        const response = await fetch(APIurl, options);
+        const response = await fetch('https://www.balldontlie.io/api/v1/teams');
         const data = await response.json();
-        const teams = data.response.teamList;
+        const teams = data.data;
 
-        const list = document.getElementById('teams-list');
-        list.innerHTML = ''; // tyhjennetään vanhat
-
+        const list = document.getElementById('teams');
+        list.innerHTML = '';
+        
         teams.forEach(team => {
-            const item = document.createElement('li');
-            item.innerHTML = `
-                <img src="${team.logo}" alt="${team.name}" width="50" style="vertical-align:middle; margin-right:10px;">
-                <strong>${team.name}</strong> (${team.abbrev})
-            `;
+            const item = document.createElement('div');
+            item.textContent = `${team.full_name} (${team.abbreviation})`;
             list.appendChild(item);
         });
     } catch (error) {
         console.error('Virhe:', error);
     }
 }
+getTeams();
 
-getData();
+
+
